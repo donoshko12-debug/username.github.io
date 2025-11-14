@@ -2,17 +2,38 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<title>Кнопка Любви</title>
+<title>Предложение на свидание</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  #message { margin-top: 20px; font-weight: bold; }
+  button { margin: 5px; padding: 10px 20px; }
+</style>
 </head>
 <body>
 
-<button id="loveButton">ТЫК</button>
-<p id="message"></p>
+<button id="greetBtn">Здравствуйте</button>
+<div id="message"></div>
 
 <script>
-  document.getElementById('loveButton').addEventListener('click', function() {
-    document.getElementById('message').textContent = 'Ты милашка. Хорошего дня❤️';
-  });
+  const greetBtn = document.getElementById('greetBtn');
+  const messageDiv = document.getElementById('message');
+
+  greetBtn.onclick = () => {
+    messageDiv.innerHTML = `
+      <p>Вам поступило предложение на свидание в заведении "Come in" для игры в "Mortal Combat". 
+      Если согласны, то будьте готовы к 20:00. Образ на ваш выбор, вы в любом будете выглядеть шикарно.</p>
+      <button id="yesBtn">Да</button>
+      <button id="noBtn">Нет</button>
+    `;
+
+    document.getElementById('yesBtn').onclick = () => {
+      messageDiv.innerHTML = 'Отлично, жду Вас, моя королева';
+    };
+
+    document.getElementById('noBtn').onclick = () => {
+      messageDiv.innerHTML = 'Подумайте еще или объясните причину в личные сообщения';
+    };
+  };
 </script>
 
 </body>
